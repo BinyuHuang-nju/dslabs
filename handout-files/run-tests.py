@@ -94,10 +94,13 @@ def run_tests(lab, part=None, no_run=False, no_search=False,
 
         command.append('--filter=%s=%s' % (EXCLUDE_FILTER, ','.join(exclude)))
 
+    """test file location"""
     test_suite = 'dslabs.testsuites.Lab%s%sTestSuite' % (
         lab, 'Part%s' % part if part else "")
 
     test_file = os.path.join('out/tst', *test_suite.split('.')) + '.class'
+    #test_file = os.path.join('labs/lab0-pingpong/tst', *test_suite.split('.')) + '.java'
+    print("test_file:"+test_file)
     if not os.path.isfile(test_file):
         print("Count not find test file %s" % test_file)
         return
